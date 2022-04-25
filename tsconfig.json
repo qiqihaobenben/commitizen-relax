@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "declaration": true,
+    "target": "ES5",
+    "resolveJsonModule": true,
+    "typeRoots": ["node_modules/@types", "types"]
+  }
+}
