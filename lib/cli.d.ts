@@ -1,2 +1,5 @@
 #!/usr/bin/env node
-export {};
+export interface CommanderOptions {
+    force: boolean;
+    config: "zh" | "en";
+}

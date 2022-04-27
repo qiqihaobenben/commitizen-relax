@@ -6,6 +6,6 @@
     "declaration": true,
     "target": "ES5",
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types", "types"]
+    "allowJs": true
   }
 }
