@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from "fs-extra";
 import path from "path";
 import { CommanderOptions } from "../cli";
 
@@ -7,11 +7,10 @@ function init(options: CommanderOptions) {
   const configFilePath = path.join(__dirname, `../config/commitlint.${options.config}.js`);
   const newConfigFilePath = path.join(process.cwd(), ".commitlintrc.js");
   try {
-    const content = fs.readFileSync(configFilePath);
-    fs.writeFileSync(newConfigFilePath, content);
+    fs.copySync(configFilePath, newConfigFilePath);
   } catch (e) {
     console.error(`Error: ${e}`);
   }
 }
 
-export { init };
+export default init;

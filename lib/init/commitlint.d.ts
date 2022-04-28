@@ -1,3 +1,3 @@
 import { CommanderOptions } from "../cli";
 declare function init(options: CommanderOptions): void;
-export { init };
+export default init;

@@ -6,6 +6,7 @@
     "declaration": true,
     "target": "ES5",
     "resolveJsonModule": true,
-    "allowJs": true
+    "allowJs": true,
+    "importHelpers": true
   }
 }

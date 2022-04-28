@@ -22,10 +22,11 @@
   "scripts": {
     "clean": "rimraf ./lib",
     "lint": "eslint --ext .ts",
-    "start": "tsc --watch & nodemon lib/cli.js",
+    "start": "tsc --watch",
     "prebuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"TODO LIST\"",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.ts": "eslint --fix",
@@ -33,13 +34,15 @@
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
+    "@types/fs-extra": "^9.0.13",
     "@types/node": "^17.0.26",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "commitizen": "^4.2.4",
+    "cz-git": "^1.2.7",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
@@ -47,11 +50,18 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "chalk": "^5.0.1",
-    "commander": "^9.2.0"
+    "chalk": "^4.1.2",
+    "commander": "^9.2.0",
+    "commitizen": "^4.2.4",
+    "fs-extra": "^10.1.0"
   },
   "engineStrict": true,
   "engines": {
     "node": ">=14"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
   }
 }
