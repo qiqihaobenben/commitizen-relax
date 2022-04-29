@@ -19,8 +19,9 @@ function updateHooks(rootDir: string) {
   if (fs.existsSync(commitMsgPath)) {
     fs.removeSync(commitMsgPath);
   }
+  // TODO 添加一些导语
   execSync("npx husky add .husky/prepare-commit-msg 'exec < /dev/tty && npx cz --hook || true'");
-  execSync("npx husky add .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'");
+  execSync("npx husky add .husky/commit-msg 'npx commitlint --edit \"$1\"'");
 }
 
 export default init;

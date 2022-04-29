@@ -4,6 +4,7 @@
 module.exports = {
     rules: {
     // @see: https://commitlint.js.org/#/reference-rules
+
     },
     prompt: {
         messages: {

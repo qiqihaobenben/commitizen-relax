@@ -3,6 +3,8 @@
 module.exports = {
   rules: {
     // @see: https://commitlint.js.org/#/reference-rules
+    "subject-min-length": [2, "always", 2],
+    "subject-empty": [2, "never"],
   },
   prompt: {
     messages: {
