@@ -21,21 +21,27 @@ const defaultInitOptions: InitOptions = {
   exact: false,
 };
 
-const spinner = ora({ text: chalk.blackBright("cz-relax init..."), spinner: "dots" });
+const spinner = ora({ text: chalk.black.bgWhite("cz-relax init... \n"), spinner: "dots" });
 spinner.start();
 
 program.version(VERSION);
 program
-  .option("--force", "For commitizen while a previous adapter and husky is already configured. Use --force to override")
-  .addOption(new Option("-c, --config <type>", "need to set a profile type").choices(["zh", "en"]).default("zh"));
+  .option(
+    "-f, --force",
+    "For commitizen while a previous adapter and husky is already configured. Use --force to override",
+  )
+  .addOption(new Option("-l, --language <type>", "need to set a profile type").choices(["zh", "en"]).default("zh"))
+  .addOption(new Option("-a, --adapter <npmName>", "need to set a adapter npm name").default("cz-git"));
 program.addHelpText(
   "after",
   `
 
 Example call:
   $ cz-relax init
-  $ cz-relax init --cinfig zh
-  $ cz-relax init --cinfig en
+  $ cz-relax init --force
+  $ cz-relax init --language zh
+  $ cz-relax init --language en --force
+  $ cz-relax init --language zh --force --adapter cz-conventional-changelog
 `,
 );
 
@@ -44,19 +50,20 @@ program.parse(process.argv);
 const [command] = program.args;
 const options: CommanderOptions = program.opts();
 const initOptions = Object.assign(defaultInitOptions, options);
+const adapterNamName = initOptions.adapter;
 
 if (command === "init") {
   try {
-    console.log(chalk.cyan("1.）commitizen init..."));
-    commitizenInit(process.cwd(), "cz-git", initOptions);
+    console.log(chalk.cyan(`1.) commitizen init...`));
+    commitizenInit(process.cwd(), adapterNamName, initOptions);
 
-    console.log(chalk.cyan("2.）commitlint init..."));
+    console.log(chalk.cyan("2.) commitlint init..."));
     commitlintInit(options);
 
-    console.log(chalk.cyan("3.husky init..."));
+    console.log(chalk.cyan("3.) husky init..."));
     huskyInit(initOptions);
     // TODO 考虑是不否增加一个预检，判断有没有安装所有的依赖包
-    spinner.succeed(chalk.greenBright("The cz-relax has been inited!"));
+    spinner.succeed(chalk.green("The cz-relax has been inited!"));
   } catch (e) {
     spinner.fail(chalk.red(`Error: ${e}`));
   }

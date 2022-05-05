@@ -21,25 +21,25 @@ function updateHooks(rootDir: string, isForce: boolean) {
 
   if (fs.existsSync(prepareCommitMsgPath)) {
     if (isForce) {
+      console.log(chalk.yellow(`using --force，the .husky/prepare-commit-msg will override.`));
       fs.removeSync(prepareCommitMsgPath);
     } else {
       console.log(
-        chalk.yellowBright(`
-        The file already exists: .husky/prepare-commit-msg, husky is append, not override.
-        If you want to override hooks file, please use Use --force to override.
-        `),
+        chalk.yellow(
+          `The file already exists: .husky/prepare-commit-msg, husky is append, not override.If you want to override hooks file, please use Use --force to override.`,
+        ),
       );
     }
   }
   if (fs.existsSync(commitMsgPath)) {
     if (isForce) {
+      console.log(chalk.yellow(`using --force，the .husky/commit-msg will override.`));
       fs.removeSync(commitMsgPath);
     } else {
       console.log(
-        chalk.yellowBright(`
-          The file already exists: .husky/commit-msg, husky is append , not override.
-          If you want to override hooks file, please use Use --force to override.
-          `),
+        chalk.yellow(
+          `he file already exists: .husky/commit-msg, husky is append , not override.If you want to override hooks file, please use Use --force to override.`,
+        ),
       );
     }
   }

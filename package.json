@@ -22,7 +22,7 @@
   "scripts": {
     "clean": "rimraf ./lib",
     "lint": "eslint --ext .ts",
-    "start": "tsc --watch",
+    "dev": "tsc --watch",
     "prebuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "build": "tsc",
     "test": "echo \"TODO LIST\"",

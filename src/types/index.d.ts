@@ -1,6 +1,7 @@
 export declare interface CommanderOptions {
   force: boolean;
-  config: "zh" | "en";
+  language: "zh" | "en";
+  adapter: string;
 }
 
 export declare interface InitOptions {
