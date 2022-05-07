@@ -30,7 +30,7 @@ program
     "-f, --force",
     "For commitizen while a previous adapter and husky is already configured. Use --force to override",
   )
-  .addOption(new Option("-l, --language <type>", "need to set a profile type").choices(["zh", "en"]).default("zh"))
+  .addOption(new Option("-l, --language <type>", "need to set a profile type").choices(["zh", "en"]).default("en"))
   .addOption(new Option("-a, --adapter <npmName>", "need to set a adapter npm name").default("cz-git"));
 program.addHelpText(
   "after",

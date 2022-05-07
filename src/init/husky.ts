@@ -19,17 +19,21 @@ function updateHooks(rootDir: string, isForce: boolean) {
   const prepareCommitMsgPath = path.join(rootDir, "prepare-commit-msg");
   const commitMsgPath = path.join(rootDir, "commit-msg");
 
-  if (fs.existsSync(prepareCommitMsgPath) && isForce) {
-    console.log("using --force，the .husky/prepare-commit-msg will override.");
-    fs.removeSync(prepareCommitMsgPath);
+  if (fs.existsSync(prepareCommitMsgPath)) {
+    if (isForce) {
+      console.log("using --force，the .husky/prepare-commit-msg will override.");
+      fs.removeSync(prepareCommitMsgPath);
+    }
   } else {
     console.log(
       "The file already exists: .husky/prepare-commit-msg, husky is append, not override.If you want to override hooks file, please use Use --force to override.",
     );
   }
-  if (fs.existsSync(commitMsgPath) && isForce) {
-    console.log("using --force，the .husky/commit-msg will override.");
-    fs.removeSync(commitMsgPath);
+  if (fs.existsSync(commitMsgPath)) {
+    if (isForce) {
+      console.log("using --force，the .husky/commit-msg will override.");
+      fs.removeSync(commitMsgPath);
+    }
   } else {
     console.log(
       "The file already exists: .husky/commit-msg, husky is append , not override.If you want to override hooks file, please use Use --force to override.",

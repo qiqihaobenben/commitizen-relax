@@ -19,6 +19,9 @@
   "main": "lib/cli.js",
   "bin": "lib/cli.js",
   "types": "lib/cli.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "clean": "rimraf ./lib",
     "lint": "eslint --ext .ts",
