@@ -7,7 +7,7 @@
 </p>
 
 <h4 align="center">A better commitizen practice And one-click to configured commitizen.<h4>
-<h4 align="center"><a target="_blank" href="https://github.com/qiqihaobenben/commitizen-relax/docs/zh.md">中文文档</a><h4>
+<h4 align="center"><a target="_blank" href="https://github.com/qiqihaobenben/commitizen-relax/blob/release/docs/zh.md">中文文档</a><h4>
 
 ## Introduction
 
