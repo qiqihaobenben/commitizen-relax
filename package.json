@@ -23,16 +23,20 @@
     "lib"
   ],
   "scripts": {
-    "clean": "rimraf ./lib",
-    "lint": "eslint --ext .ts",
+    "prepare": "husky install",
     "dev": "tsc --watch",
-    "prebuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
+    "lint": "eslint --ext .ts",
+    "prepublishOnly": "npm run clean && npm run build",
+    "clean": "rimraf ./lib",
+    "preBuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "build": "tsc",
-    "test": "echo \"TODO LIST\"",
-    "prepare": "husky install"
+    "test": "echo \"TODO LIST\""
   },
   "lint-staged": {
-    "*.ts": "eslint --fix",
+    "src/**/*.{ts,js}": [
+      "eslint --fix",
+      "git add"
+    ],
     "package.json": "sort-package-json"
   },
   "devDependencies": {

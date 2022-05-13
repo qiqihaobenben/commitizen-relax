@@ -1,21 +1,21 @@
 import path from "path";
 import fs from "fs-extra";
 import chalk from "chalk";
-import { execSync } from "child_process";
+import { exec } from "child_process";
 
 import { CommanderOptions } from "../types";
 
-function init(options: CommanderOptions) {
+async function init(options: CommanderOptions) {
   const huskyDirPath = path.join(process.cwd(), ".husky");
   const isInstalledHusky = fs.existsSync(huskyDirPath);
   const isForce = options.force;
   if (!isInstalledHusky || isForce) {
-    execSync("npx husky-init && npm install");
+    await exec("npx husky-init && npm install");
   }
   updateHooks(huskyDirPath, isForce);
 }
 
-function updateHooks(rootDir: string, isForce: boolean) {
+async function updateHooks(rootDir: string, isForce: boolean) {
   const prepareCommitMsgPath = path.join(rootDir, "prepare-commit-msg");
   const commitMsgPath = path.join(rootDir, "commit-msg");
 
@@ -41,8 +41,8 @@ function updateHooks(rootDir: string, isForce: boolean) {
   }
 
   // TODO 添加一些导语
-  execSync("npx husky add .husky/prepare-commit-msg 'exec < /dev/tty && npx cz --hook || true'");
-  execSync("npx husky add .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'");
+  await exec("npx husky add .husky/prepare-commit-msg 'exec < /dev/tty && npx cz --hook || true'");
+  await exec("npx husky add .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'");
 }
 
 export default init;

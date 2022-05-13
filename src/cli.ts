@@ -3,9 +3,7 @@ import chalk from "chalk";
 import ora from "ora";
 import { program, Option } from "commander";
 import { VERSION } from "./version";
-import commitizenInit from "./init/commitizen";
-import commitlintInit from "./init/commitlint";
-import huskyInit from "./init/husky";
+import init from "./init";
 
 import { CommanderOptions, InitOptions } from "./types";
 
@@ -20,9 +18,6 @@ const defaultInitOptions: InitOptions = {
   dev: true,
   exact: false,
 };
-
-const spinner = ora({ text: chalk.black.bgWhite("cz-relax init... \n"), spinner: "dots" });
-spinner.start();
 
 program.version(VERSION);
 program
@@ -49,25 +44,20 @@ program.parse(process.argv);
 
 const [command] = program.args;
 const options: CommanderOptions = program.opts();
-const initOptions = Object.assign(defaultInitOptions, options);
-const adapterNamName = initOptions.adapter;
 
-if (command === "init") {
-  try {
-    console.log(chalk.cyan(`1.) commitizen init...`));
-    commitizenInit(process.cwd(), adapterNamName, initOptions);
+(async () => {
+  const spinner = ora({ text: chalk.black.bgWhite("cz-relax init... \n"), spinner: "dots" });
+  if (command === "init") {
+    console.log("Initialization will take some time. Please wait.");
 
-    console.log(chalk.cyan("2.) commitlint init..."));
-    commitlintInit(options);
-
-    console.log(chalk.cyan("3.) husky init..."));
-    huskyInit(initOptions);
-    // TODO 考虑是不否增加一个预检，判断有没有安装所有的依赖包
-    spinner.succeed(chalk.green("The cz-relax has been inited!"));
-  } catch (e) {
-    spinner.fail(chalk.red(`Error: ${e}`));
+    try {
+      await init(options);
+      spinner.succeed(chalk.green("The cz-relax has been inited!"));
+    } catch (e) {
+      spinner.fail(chalk.red(`Error: ${e}`));
+    }
+  } else {
+    spinner.fail(chalk.red("Error: You must provide 'init' as command, example: cz-relax init"));
+    process.exit(0);
   }
-} else {
-  spinner.fail(chalk.red("Error: You must provide 'init' as command, example: cz-relax init"));
-  process.exit(0);
-}
+})();
