@@ -64,6 +64,16 @@ It's simple,then you can perform normal git operations.
 npx cz-relax init --force
 ```
 
+### 为什么会报错：`Error: no test specified` ？
+
+因为，husky 是用的 `husky-init` 初始化的，它添加了一个 `pre-commit` 的例子：`set('.husky/pre-commit', 'npm test')`。如果在你的`package.json`中有 test 命令，请查看一下 `test` 做了什么。
+
+### Only support npm?
+
+### 只支持 npm？
+
+是的，现在还没有支持 yarn，后续会完善。
+
 ### 初始化默认使用的是什么 commitizen adapter?
 
 cz-relax 初始化默认使用的 adapter 是 cz-git，

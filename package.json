@@ -1,6 +1,6 @@
 {
   "name": "cz-relax",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A better commitizen practice",
   "keywords": [
     "commitizen",
@@ -54,6 +54,7 @@
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "sort-package-json": "^1.55.0",
+    "type-fest": "^2.12.2",
     "typescript": "^4.6.3"
   },
   "dependencies": {

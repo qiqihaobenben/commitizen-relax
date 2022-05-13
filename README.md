@@ -71,8 +71,16 @@ For commitizen while a previous adapter and husky is already configured. Use --f
 npx cz-relax init --force
 ```
 
+### Why report an error: `Error: no test specified` ?
+
+Because, husky initialized by `husky-init`, it add pre-commit sample: `set('.husky/pre-commit', 'npm test')`. If you have a `test` command in `package.json`，please check how `test` work.
+
+### Only support npm?
+
+Yeah, yarn are not support at this time. I will improve it in the furture.
+
 ### What commitizen adapter is used default for initialization?
 
 The cz-relax default adapter used fro initialize is [cz-git](https://github.com/Zhengqbbb/cz-git).
 
-You can also use other adapters, for example, `cz-conventional-changelog`. For the time being, however, you need to create your own configuration file for commitizen. I will improve it in the furture.
+You can also use other adapters, for example, `cz-conventional-changelog`. However, you need to create your own configuration file for commitizen. I will improve it in the furture.
