@@ -1,6 +1,6 @@
 {
   "name": "cz-relax",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "A better commitizen practice",
   "keywords": [
     "commitizen",
@@ -28,7 +28,7 @@
     "lint": "eslint --ext .ts",
     "prepublishOnly": "npm run clean && npm run build",
     "clean": "rimraf ./lib",
-    "preBuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
+    "prebuild": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
     "build": "tsc",
     "test": "echo \"TODO LIST\""
   },

@@ -28,8 +28,6 @@ npx cz-relax init
 npx cz-relax init --language zh
 ```
 
-It's simple,then you can perform normal git operations.
-
 完成上面两步，你就可以正常的使用 `git commit`了，此时 commitizen 就生效了。
 
 ## 使用

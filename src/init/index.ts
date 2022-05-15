@@ -29,5 +29,5 @@ export default async function init(options: CommanderOptions) {
   await commitlintInit(options);
 
   console.log(chalk.cyan("3.) husky init..."));
-  await huskyInit(initOptions);
+  huskyInit(initOptions);
 }
