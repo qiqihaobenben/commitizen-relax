@@ -1,6 +1,6 @@
 <h1 align="center">cz-relax</h1>
 
-<h4 align="center">一键配置 commit 友好的仓库<h4>
+<h4 align="center">一键配置 commit 友好的仓库</h4>
 
 ## 介绍
 
@@ -14,6 +14,8 @@
 
 ```sh
 npm install cz-relax --save-dev
+// 或者
+yarn add cz-relax --dev
 ```
 
 ### 2. 初始化
@@ -66,11 +68,6 @@ npx cz-relax init --force
 
 因为，husky 是用的 `husky-init` 初始化的，它添加了一个 `pre-commit` 的例子：`set('.husky/pre-commit', 'npm test')`。如果在你的`package.json`中有 test 命令，请查看一下 `test` 做了什么。
 
-### Only support npm?
-
-### 只支持 npm？
-
-是的，现在还没有支持 yarn，后续会完善。
 
 ### 初始化默认使用的是什么 commitizen adapter?
 

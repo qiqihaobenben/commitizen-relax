@@ -6,8 +6,8 @@
     </a>
 </p>
 
-<h4 align="center">A better commitizen practice And one-click to configured commitizen.<h4>
-<h4 align="center"><a target="_blank" href="https://github.com/qiqihaobenben/commitizen-relax/blob/release/docs/zh.md">中文文档</a><h4>
+<h4 align="center">A better commitizen practice And one-click to configured commitizen.</h4>
+<h4 align="center"><a target="_blank" href="https://github.com/qiqihaobenben/commitizen-relax/blob/release/docs/zh.md">中文文档</a></h4>
 
 ## Introduction
 
@@ -21,6 +21,8 @@ Now, it only takes two steps to finish the above work and make everything easier
 
 ```sh
 npm install cz-relax --save-dev
+// or
+yarn add cz-relax --dev
 ```
 
 ### 2. Initialize
@@ -75,9 +77,6 @@ npx cz-relax init --force
 
 Because, husky initialized by `husky-init`, it add pre-commit sample: `set('.husky/pre-commit', 'npm test')`. If you have a `test` command in `package.json`，please check how `test` work.
 
-### Only support npm?
-
-Yeah, yarn are not support at this time. I will improve it in the furture.
 
 ### What commitizen adapter is used default for initialization?
 

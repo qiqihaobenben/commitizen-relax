@@ -5,19 +5,7 @@ import { program, Option } from "commander";
 import { VERSION } from "./version";
 import init from "./init";
 
-import { CommanderOptions, InitOptions } from "./types";
-
-const defaultInitOptions: InitOptions = {
-  save: false,
-  saveDev: true,
-  saveExact: false,
-  force: false,
-
-  // for --yarn use
-  yarn: false,
-  dev: true,
-  exact: false,
-};
+import { CommanderOptions } from "./types";
 
 program.version(VERSION);
 program
