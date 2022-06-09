@@ -37,6 +37,12 @@ If you are using chinese：
 npx cz-relax init --language zh
 ```
 
+If you are using yarn：
+
+```sh
+npx cz-relax init --yarn
+```
+
 It's simple,then you can perform normal `git commit`.At this time, commitizen takes effect.
 
 ## Usage
@@ -47,6 +53,7 @@ Usage: `cz-relax [options]`
 
 - `-V, --version`: output the version number
 - `-f, --force`: For commitizen while a previous adapter and husky is already configured. Use --force to override
+- `--yarn`: use yarn manage package
 - `-l, --language <type>`: need to set a profile type (choices: "zh", "en", default: "zh")
 - `-a, --adapter <npmName>`: need to set a adapter npm name (default: "cz-git")
 - `-h, --help`: display help for command
@@ -58,6 +65,7 @@ Example call:
 ```sh
   $ cz-relax init
   $ cz-relax init --force
+  $ cz-relax init --yarn
   $ cz-relax init --language zh
   $ cz-relax init --language en --force
   $ cz-relax init --language zh --force --adapter cz-conventional-changelog

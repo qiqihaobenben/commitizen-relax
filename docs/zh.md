@@ -30,6 +30,13 @@ npx cz-relax init
 npx cz-relax init --language zh
 ```
 
+
+如果你使用的是 yarn：
+
+```sh
+npx cz-relax init --yarn
+```
+
 完成上面两步，你就可以正常的使用 `git commit`了，此时 commitizen 就生效了。
 
 ## 使用
@@ -40,6 +47,7 @@ npx cz-relax init --language zh
 
 - `-V, --version`: 输出版本号
 - `-f, --force`: 如果 commitizen 发现之前已经设置过适配器和 husky 配置文件了，需要用 --force 覆盖
+- `--yarn`: 使用 yarn 管理安装包
 - `-l, --language <type>`: 需要设置的语言类型 (选项: "zh", "en", 默认: "zh")
 - `-a, --adapter <npmName>`: 需要设置的适配器 (默认: "cz-git")
 - `-h, --help`: display help for command
@@ -49,6 +57,7 @@ npx cz-relax init --language zh
 ```sh
   $ cz-relax init
   $ cz-relax init --force
+  $ cz-relax init --yarn
   $ cz-relax init --language zh
   $ cz-relax init --language en --force
   $ cz-relax init --language zh --force --adapter cz-conventional-changelog
