@@ -21,13 +21,14 @@ const defaultInitOptions: InitOptions = {
 export default async function init(options: CommanderOptions) {
   const initOptions = Object.assign(defaultInitOptions, options);
   const adapterNamName = initOptions.adapter;
+  const repoPath = process.cwd();
 
   console.log(chalk.cyan(`1.) commitizen init...`));
-  commitizenInit(process.cwd(), adapterNamName, initOptions);
+  commitizenInit(repoPath, adapterNamName, initOptions);
 
   console.log(chalk.cyan("2.) commitlint init..."));
-  await commitlintInit(options);
+  await commitlintInit(repoPath, options);
 
   console.log(chalk.cyan("3.) husky init..."));
-  huskyInit(initOptions);
+  huskyInit(repoPath, initOptions);
 }

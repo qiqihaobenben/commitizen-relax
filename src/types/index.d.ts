@@ -2,6 +2,7 @@ export declare interface CommanderOptions {
   force: boolean;
   language: "zh" | "en";
   adapter: string;
+  yarn: boolean;
 }
 
 export declare interface InitOptions {

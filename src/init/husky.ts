@@ -2,14 +2,15 @@ import path from "path";
 import fs from "fs-extra";
 import { execSync } from "child_process";
 
-import { CommanderOptions } from "../types";
+import { CommanderOptions, InitOptions } from "../types";
 
-function init(options: CommanderOptions) {
-  const huskyDirPath = path.join(process.cwd(), ".husky");
+function init(repoPath: string, options: CommanderOptions & InitOptions) {
+  const huskyDirPath = path.join(repoPath, ".husky");
   const isInstalledHusky = fs.existsSync(huskyDirPath);
   const isForce = options.force;
   if (!isInstalledHusky || isForce) {
-    execSync("npx husky-init && npm install");
+    const installCommand = options.yarn ? "yarn" : "npm install";
+    execSync(`npx husky-init && ${installCommand}`);
   }
   updateHooks(huskyDirPath, isForce);
 }

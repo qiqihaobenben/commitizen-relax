@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import chalk from "chalk";
 import ora from "ora";
 import { program, Option } from "commander";
@@ -8,13 +9,16 @@ import init from "./init";
 import { CommanderOptions } from "./types";
 
 program.version(VERSION);
+
 program
   .option(
     "-f, --force",
     "For commitizen while a previous adapter and husky is already configured. Use --force to override",
   )
-  .addOption(new Option("-l, --language <type>", "need to set a profile type").choices(["zh", "en"]).default("en"))
-  .addOption(new Option("-a, --adapter <npmName>", "need to set a adapter npm name").default("cz-git"));
+  .option("--yarn", "use yarn manage package")
+  .option("-a, --adapter <npmName>", "need to set a adapter npm name", "cz-git")
+  .addOption(new Option("-l, --language <type>", "need to set a profile type").choices(["zh", "en"]).default("en"));
+
 program.addHelpText(
   "after",
   `
@@ -22,6 +26,7 @@ program.addHelpText(
 Example call:
   $ cz-relax init
   $ cz-relax init --force
+  $ cz-relax init --yarn
   $ cz-relax init --language zh
   $ cz-relax init --language en --force
   $ cz-relax init --language zh --force --adapter cz-conventional-changelog
