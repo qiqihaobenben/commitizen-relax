@@ -39,6 +39,10 @@ npx cz-relax init --yarn
 
 完成上面两步，你就可以正常的使用 `git commit`了，此时 commitizen 就生效了。
 
+## 效果
+
+![](./2022-05-15%2012-30-49.2022-05-15%2012_49_04.gif)
+
 ## 使用
 
 使用: `cz-relax [options]`
